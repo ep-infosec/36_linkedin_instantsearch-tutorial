@@ -1,0 +1,31 @@
+Step 1 - System setup:
+
+Please go through assignment0 listed in:
+instantsearch-assignments/assignment0
+
+This will ensure that you have the setup as well the dependecies installed.
+
+Step 2 - Indexing:
+
+Start an instance of elasticsearch:
+<your_elasticsearch_location>/bin/elasticsearch
+
+Index instant results:
+
+python src/indexing/simple_index.py --i data/stackoverflow/posts_small.json
+
+Query autocomplete via FST:
+
+python src/indexing/query_autocomplete.py --i data/stackoverflow/Tags_small.xml
+
+Step 3 - start the mid-tier service to call hit both the indices above and
+blend results
+
+python src/backend/simplify_es_output.py
+
+This will start a serive in port 8080
+
+Step 4 - front end
+
+Open the following file in your browser:
+src/frontend/es.html
